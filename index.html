@@ -19,7 +19,7 @@
     <title>🚨 CallFast - รวมเบอร์โทรฉุกเฉินที่ควรมี</title>
     <meta name="description" content="รวมเบอร์โทรฉุกเฉินที่สำคัญของประเทศไทย">
     <meta name="theme-color" content="#2563eb">
-<link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ff0000">
     <link rel="icon" href="icon-512.png" sizes="512x512" type="image/png">
     
@@ -885,5 +885,12 @@
             }
         });
     </script>
+        <script>
+                if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+    }
+</script>
 </body>
 </html>
