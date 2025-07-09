@@ -1,0 +1,886 @@
+
+<!--
+/**
+* .------------------------------------------------------------------------------------------------------------------------.
+* | ____        _   _   _                           ____  _             _ _          ____                _    _      _     |
+* ||  _ \ _   _| |_| |_(_)_ __   ___  _ __   __ _  / ___|| |_ _   _  __| (_) ___    / ___|___           | |  | |_ __| |    |
+* || |_) | | | | __| __| | '_ \ / _ \| '_ \ / _` | \___ \| __| | | |/ _` | |/ _ \  | |   / _ \          | |  | __/ _` |    |
+* ||  __/| |_| | |_| |_| | |_) | (_) | | | | (_| |  ___) | |_| |_| | (_| | | (_) | | |__| (_) |  _   _  | |__| || (_| |  _ |
+* ||_|    \__,_|\__|\__|_| .__/ \___/|_| |_|\__, | |____/ \__|\__,_|\__,_|_|\___/   \____\___/  (_) ( ) |_____\__\__,_| (_)|
+* |                      |_|                |___/                                                   |/                     |
+* '------------------------------------------------------------------------------------------------------------------------'
+*/
+-->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 CallFast - รวมเบอร์โทรฉุกเฉินที่ควรมี</title>
+    <meta name="description" content="รวมเบอร์โทรฉุกเฉินที่สำคัญของประเทศไทย">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- IBM Plex Sans Thai Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkNhbGxGYXN0IC0g4Lij4Lin4Lih4LmA4Lia4Lit4LijIOC5guC4l+C4o+C4ieC4uOC4geC5gOC4iOC4tOC4mSIsCiAgInNob3J0X25hbWUiOiAiQ2FsbEZhc3QiLAogICJzdGFydF91cmwiOiAiLyIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzE5MTkxOSIsCiAgInRoZW1lX2NvbG9yIjogIiMyNTYzZWIiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSGRwWkhSb1BTSXhNREFpSUdobGFXZG9kRDBpTVRBd0lqNDhkR1Y0ZENCNFBTTDFNQ0lpSUhrOUlqVXdJaUJrYjIxcGJtRnVkQzFpWVhObGJHbHVaVDBpWTJWdWRHVnlJaUJtYjI1MExYTnBlbVU5SWpNd0lpQm1hV3hzUFNJMFlqUTRaVFlpUGlIa3Z6OThJRU5oYkd4R1lYTjBQQzlqWlhKamJHVStQQzl6ZG1jK0lnPT0iLAogICAgICAic2l6ZXMiOiAiMTAweDEwMCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48dGV4dCB4PSI1MCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50ZXIiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiM0YjQ4ZTYiPvCfmogiPC90ZXh0Pjwvc3ZnPg==">
+    
+    <!-- Tailwind CSS Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'thai': ['IBM Plex Sans Thai', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'bounce-in': 'bounceIn 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateY(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .category:nth-child(1) { animation-delay: 0.1s; }
+        .category:nth-child(2) { animation-delay: 0.2s; }
+        .category:nth-child(3) { animation-delay: 0.3s; }
+        .category:nth-child(4) { animation-delay: 0.4s; }
+        .category:nth-child(5) { animation-delay: 0.5s; }
+
+        .services-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .category.expanded .services-container {
+            max-height: 1000px;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .category.expanded .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+        }
+
+        body.dark-mode .bg-white\/95 {
+            background: rgba(30, 41, 59, 0.95) !important;
+            backdrop-filter: blur(16px);
+        }
+
+        body.dark-mode .bg-white {
+            background: #334155 !important;
+        }
+
+        body.dark-mode .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+
+        body.dark-mode .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+
+        body.dark-mode .text-gray-500 {
+            color: #94a3b8 !important;
+        }
+
+        body.dark-mode .bg-gray-50 {
+            background: #475569 !important;
+        }
+
+        body.dark-mode .border-gray-200 {
+            border-color: #475569 !important;
+        }
+
+        body.dark-mode .placeholder-gray-400::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="font-thai bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen p-5">
+    <div class="max-w-2xl mx-auto bg-white/95 backdrop-blur-lg rounded-3xl p-6 shadow-2xl">
+        
+        <!-- Install Prompt -->
+        <div id="installPrompt" class="hidden animate-slide-in bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-5 rounded-2xl mb-6 text-center">
+            <p class="mb-4 font-medium">📱 ติดตั้ง CallFast เป็นแอปในมือถือของคุณเพื่อการใช้งานที่รวดเร็วยิ่งขึ้น!</p>
+            <div class="space-x-3">
+                <button onclick="installPWA()" class="bg-white/20 hover:bg-white/30 border-2 border-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1">
+                    ติดตั้งแอป
+                </button>
+                <button onclick="hideInstallPrompt()" class="bg-white/20 hover:bg-white/30 border-2 border-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1">
+                    ไม่ใช่ตอนนี้
+                </button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-blue-600 mb-3 drop-shadow-lg animate-bounce-in">🚨 CallFast</h1>
+            <p class="text-gray-600 text-lg font-medium">รวมเบอร์โทรฉุกเฉินที่ควรมี</p>
+        </div>
+
+        <!-- Quick Access Buttons -->
+        <div class="grid grid-cols-3 gap-4 mb-8">
+            <a href="tel:191" class="group bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl active:scale-95">
+                <div class="text-2xl mb-2">👮‍♂️</div>
+                <div class="font-semibold text-sm">ตำรวจ 191</div>
+            </a>
+            <a href="tel:199" class="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl active:scale-95">
+                <div class="text-2xl mb-2">🔥</div>
+                <div class="font-semibold text-sm">ดับเพลิง 199</div>
+            </a>
+            <a href="tel:1669" class="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl active:scale-95">
+                <div class="text-2xl mb-2">🚑</div>
+                <div class="font-semibold text-sm">ฉุกเฉิน 1669</div>
+            </a>
+        </div>
+
+        <!-- Search Box -->
+        <div class="mb-6">
+            <input type="text" id="searchBox" 
+                   placeholder="🔍 ค้นหาเบอร์โทรฉุกเฉิน..." 
+                   class="w-full p-4 border-2 border-gray-200 rounded-2xl text-lg font-medium placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
+        </div>
+
+        <!-- Control Panel -->
+        <div class="mb-6 flex flex-wrap gap-3 justify-center">
+            <button onclick="toggleDarkMode()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2">
+                <span id="darkModeIcon">🌙</span>
+                <span>โหมดมืด</span>
+            </button>
+            <button onclick="shareApp()" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2">
+                <span>📤</span>
+                <span>แชร์แอป</span>
+            </button>
+            <button onclick="showRecentCalls()" class="bg-green-100 hover:bg-green-200 text-green-700 px-4 py-2 rounded-xl font-medium transition-all duration-300 flex items-center space-x-2">
+                <span>📞</span>
+                <span>ประวัติการโทร</span>
+            </button>
+        </div>
+
+        <!-- Recent Calls Modal -->
+        <div id="recentCallsModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">📞 ประวัติการโทร</h3>
+                    <button onclick="hideRecentCalls()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                <div id="recentCallsList" class="space-y-2">
+                    <p class="text-gray-500 text-center py-8">ยังไม่มีประวัติการโทร</p>
+                </div>
+                <button onclick="clearRecentCalls()" class="w-full mt-4 bg-red-100 hover:bg-red-200 text-red-700 py-2 rounded-xl font-medium transition-all duration-300">
+                    ล้างประวัติ
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="space-y-5">
+            
+            <!-- ชีวิตและความปลอดภัย -->
+            <div class="category animate-fade-in rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300" data-category="emergency">
+                <div class="category-header bg-gradient-to-r from-red-500 to-red-600 text-white p-6 cursor-pointer select-none flex justify-between items-center font-semibold text-xl" onclick="toggleCategory(this)">
+                    <span>🟥 ชีวิตและความปลอดภัย</span>
+                    <span class="dropdown-arrow text-xl">▼</span>
+                </div>
+                <div class="services-container bg-white">
+                    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="tel:191" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ตำรวจ 191">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">👮‍♂️</div>
+                                    <h3 class="font-medium text-gray-800">ตำรวจ</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">191</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:199" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ดับเพลิง 199">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🔥</div>
+                                    <h3 class="font-medium text-gray-800">ดับเพลิง</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">199</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1669" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="รถพยาบาล ฉุกเฉิน 1669">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🚑</div>
+                                    <h3 class="font-medium text-gray-800">รถพยาบาล</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1669</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1193" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ตำรวจทางหลวง 1193">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🛣️</div>
+                                    <h3 class="font-medium text-gray-800">ตำรวจทางหลวง</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1193</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ปัญหาจิตใจ / ครอบครัว -->
+            <div class="category animate-fade-in rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300" data-category="mental">
+                <div class="category-header bg-gradient-to-r from-green-500 to-green-600 text-white p-6 cursor-pointer select-none flex justify-between items-center font-semibold text-xl" onclick="toggleCategory(this)">
+                    <span>🟩 ปัญหาจิตใจ / ครอบครัว</span>
+                    <span class="dropdown-arrow text-xl">▼</span>
+                </div>
+                <div class="services-container bg-white">
+                    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="tel:1323" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="สุขภาพจิต 1323">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🧠</div>
+                                    <h3 class="font-medium text-gray-800">สุขภาพจิต</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1323</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1300" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="พม กระทรวงการพัฒนาสังคมและความมั่นคงของมนุษย์ 1300">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">👨‍👩‍👧‍👦</div>
+                                    <h3 class="font-medium text-gray-800">พม.</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1300</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1386" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ศูนย์ผู้หญิง สตรี 1386">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">👩</div>
+                                    <h3 class="font-medium text-gray-800">ศูนย์ผู้หญิง</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1386</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1567" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ดำรงธรรม 1567">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">📢</div>
+                                    <h3 class="font-medium text-gray-800">ดำรงธรรม</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1567</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- อุบัติเหตุ / เฉพาะทาง -->
+            <div class="category animate-fade-in rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300" data-category="accident">
+                <div class="category-header bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 cursor-pointer select-none flex justify-between items-center font-semibold text-xl" onclick="toggleCategory(this)">
+                    <span>🟦 อุบัติเหตุ / เฉพาะทาง</span>
+                    <span class="dropdown-arrow text-xl">▼</span>
+                </div>
+                <div class="services-container bg-white">
+                    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="tel:1155" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ตำรวจท่องเที่ยว 1155">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🧳</div>
+                                    <h3 class="font-medium text-gray-800">ตำรวจท่องเที่ยว</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1155</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1192" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="แจ้งจราจร จราจร 1192">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🚦</div>
+                                    <h3 class="font-medium text-gray-800">แจ้งจราจร</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1192</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1586" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="กรมทางหลวง ทางหลวง 1586">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🛣️</div>
+                                    <h3 class="font-medium text-gray-800">กรมทางหลวง</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1586</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1111" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="บริการภาครัฐ ราชการ 1111">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🏛️</div>
+                                    <h3 class="font-medium text-gray-800">บริการภาครัฐ</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1111</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สายด่วนสุขภาพ -->
+            <div class="category animate-fade-in rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300" data-category="health">
+                <div class="category-header bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-6 cursor-pointer select-none flex justify-between items-center font-semibold text-xl" onclick="toggleCategory(this)">
+                    <span>🟨 สายด่วนสุขภาพ</span>
+                    <span class="dropdown-arrow text-xl">▼</span>
+                </div>
+                <div class="services-container bg-white">
+                    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="tel:1422" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ควบคุมโรค โรค 1422">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🦠</div>
+                                    <h3 class="font-medium text-gray-800">ควบคุมโรค</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1422</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1668" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="ปรึกษาหมอ หมอ แพทย์ 1668">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">💊</div>
+                                    <h3 class="font-medium text-gray-800">ปรึกษาหมอ</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1668</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1330" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="สปสช สำนักงานหลักประกันสุขภาพแห่งชาติ 1330">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🏥</div>
+                                    <h3 class="font-medium text-gray-800">สปสช.</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1330</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- บริการอื่นๆ -->
+            <div class="category animate-fade-in rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-all duration-300" data-category="others">
+                <div class="category-header bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 cursor-pointer select-none flex justify-between items-center font-semibold text-xl" onclick="toggleCategory(this)">
+                    <span>🟪 บริการอื่นๆ</span>
+                    <span class="dropdown-arrow text-xl">▼</span>
+                </div>
+                <div class="services-container bg-white">
+                    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="tel:1166" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="โทรศัพท์สอบถาม 1166">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">📞</div>
+                                    <h3 class="font-medium text-gray-800">โทรศัพท์สอบถาม</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1166</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1784" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="สำนักงานคณะกรรมการคุ้มครองผู้บริโภค คุ้มครองผู้บริโภค 1784">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">🛡️</div>
+                                    <h3 class="font-medium text-gray-800">คุ้มครองผู้บริโภค</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1784</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1178" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="การไฟฟ้านครหลวง กฟน 1178">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">⚡</div>
+                                    <h3 class="font-medium text-gray-800">กฟน.</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1178</div>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:1125" class="service-card group bg-gray-50 hover:bg-white hover:shadow-lg rounded-xl p-5 transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-400 active:scale-95" data-search="การประปานครหลวง กปน 1125">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <div class="text-3xl mr-4">💧</div>
+                                    <h3 class="font-medium text-gray-800">กปน.</h3>
+                                </div>
+                                <div class="bg-blue-100 group-hover:bg-blue-600 group-hover:text-white text-blue-600 font-bold px-4 py-2 rounded-full text-lg transition-all duration-300">1125</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 pt-6 border-t border-gray-200">
+            <p class="text-gray-600 font-medium">⚡ CallFast - เข้าถึงความช่วยเหลือได้ทันที</p>
+            <p class="text-gray-500 text-sm mt-1">กดที่เบอร์เพื่อโทรออกทันที | ค้นหาได้ด้วย</p>
+            <div class="mt-4 text-xs text-gray-400">
+                <p>💡 เคล็ดลับ: ใช้ Alt+1,2,3 สำหรับเบอร์ด่วน | กด / หรือ Ctrl+F เพื่อค้นหา</p>
+                <p class="mt-1">📱 ติดตั้งเป็นแอปในมือถือเพื่อใช้งานได้แม้ไม่มีอินเทอร์เน็ต</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // PWA Installation
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallPrompt();
+        });
+
+        function showInstallPrompt() {
+            installPrompt.classList.remove('hidden');
+            installPrompt.classList.add('block');
+        }
+
+        function hideInstallPrompt() {
+            installPrompt.classList.add('hidden');
+            installPrompt.classList.remove('block');
+        }
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    hideInstallPrompt();
+                });
+            }
+        }
+
+        // Dropdown functionality
+        function toggleCategory(header) {
+            const category = header.parentElement;
+            const isExpanded = category.classList.contains('expanded');
+            
+            // Close all categories
+            document.querySelectorAll('.category').forEach(cat => {
+                cat.classList.remove('expanded');
+            });
+            
+            // Open clicked category if it wasn't expanded
+            if (!isExpanded) {
+                category.classList.add('expanded');
+            }
+        }
+
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const serviceCards = document.querySelectorAll('.service-card');
+            const categories = document.querySelectorAll('.category');
+            
+            if (searchTerm === '') {
+                // Show all categories and close them
+                categories.forEach(category => {
+                    category.classList.remove('hidden');
+                    category.classList.remove('expanded');
+                });
+                serviceCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+                return;
+            }
+            
+            // Search through service cards
+            serviceCards.forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                    // Show and expand parent category
+                    const category = card.closest('.category');
+                    category.classList.remove('hidden');
+                    category.classList.add('expanded');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Hide categories with no visible cards
+            categories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.service-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    category.classList.add('hidden');
+                } else {
+                    category.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swContent = `
+                    const CACHE_NAME = 'callfast-tailwind-v1';
+                    const urlsToCache = [
+                        '/',
+                        '/index.html',
+                        'https://cdn.tailwindcss.com',
+                        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap'
+                    ];
+
+                    self.addEventListener('install', (event) => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then((cache) => cache.addAll(urlsToCache))
+                        );
+                    });
+
+                    self.addEventListener('fetch', (event) => {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then((response) => {
+                                    if (response) {
+                                        return response;
+                                    }
+                                    return fetch(event.request);
+                                })
+                        );
+                    });
+                `;
+
+                const blob = new Blob([swContent], { type: 'application/javascript' });
+                const swURL = URL.createObjectURL(blob);
+
+                navigator.serviceWorker.register(swURL)
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Check if running as PWA
+        window.addEventListener('load', () => {
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('Running as PWA');
+                hideInstallPrompt();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Alt + number for quick dial
+            if (e.altKey) {
+                switch(e.code) {
+                    case 'Digit1':
+                        e.preventDefault();
+                        window.location.href = 'tel:191';
+                        break;
+                    case 'Digit2':
+                        e.preventDefault();
+                        window.location.href = 'tel:199';
+                        break;
+                    case 'Digit3':
+                        e.preventDefault();
+                        window.location.href = 'tel:1669';
+                        break;
+                }
+            }
+            
+            // Focus search with Ctrl+F or /
+            if ((e.ctrlKey && e.key === 'f') || e.key === '/') {
+                e.preventDefault();
+                searchBox.focus();
+            }
+        });
+
+        // Add haptic feedback for mobile
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Vibrate on mobile devices
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
+                
+                // Save to recent calls
+                saveRecentCall(this.href, this.querySelector('h3').textContent);
+            });
+        });
+
+        // Recent Calls functionality
+        function saveRecentCall(number, serviceName) {
+            let recentCalls = JSON.parse(localStorage.getItem('callfast-recent-calls') || '[]');
+            
+            const call = {
+                number: number,
+                serviceName: serviceName,
+                timestamp: new Date().toISOString(),
+                displayTime: new Date().toLocaleString('th-TH')
+            };
+            
+            // Remove if already exists and add to top
+            recentCalls = recentCalls.filter(call => call.number !== number);
+            recentCalls.unshift(call);
+            
+            // Keep only last 10 calls
+            recentCalls = recentCalls.slice(0, 10);
+            
+            localStorage.setItem('callfast-recent-calls', JSON.stringify(recentCalls));
+        }
+
+        function showRecentCalls() {
+            const modal = document.getElementById('recentCallsModal');
+            const list = document.getElementById('recentCallsList');
+            const recentCalls = JSON.parse(localStorage.getItem('callfast-recent-calls') || '[]');
+            
+            if (recentCalls.length === 0) {
+                list.innerHTML = '<p class="text-gray-500 text-center py-8">ยังไม่มีประวัติการโทร</p>';
+            } else {
+                list.innerHTML = recentCalls.map(call => `
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300">
+                        <div>
+                            <div class="font-medium text-gray-800">${call.serviceName}</div>
+                            <div class="text-sm text-gray-500">${call.displayTime}</div>
+                        </div>
+                        <a href="${call.number}" class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded-lg font-medium transition-all duration-300">
+                            โทร
+                        </a>
+                    </div>
+                `).join('');
+            }
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideRecentCalls() {
+            const modal = document.getElementById('recentCallsModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function clearRecentCalls() {
+            localStorage.removeItem('callfast-recent-calls');
+            showRecentCalls();
+        }
+
+        // Dark Mode functionality
+        function toggleDarkMode() {
+            const body = document.body;
+            const icon = document.getElementById('darkModeIcon');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.textContent = '☀️';
+                localStorage.setItem('callfast-dark-mode', 'true');
+            } else {
+                icon.textContent = '🌙';
+                localStorage.setItem('callfast-dark-mode', 'false');
+            }
+        }
+
+        // Load dark mode preference
+        function loadDarkModePreference() {
+            const darkMode = localStorage.getItem('callfast-dark-mode');
+            const icon = document.getElementById('darkModeIcon');
+            
+            if (darkMode === 'true') {
+                document.body.classList.add('dark-mode');
+                icon.textContent = '☀️';
+            }
+        }
+
+        // Share functionality
+        async function shareApp() {
+            const shareData = {
+                title: 'CallFast - รวมเบอร์โทรฉุกเฉินที่ควรมี',
+                text: 'แอปรวมเบอร์โทรฉุกเฉินของประเทศไทย เข้าถึงความช่วยเหลือได้ทันที',
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share && navigator.canShare(shareData)) {
+                    await navigator.share(shareData);
+                } else {
+                    // Fallback: Copy to clipboard
+                    await navigator.clipboard.writeText(window.location.href);
+                    showToast('📋 คัดลอกลิงก์แล้ว!');
+                }
+            } catch (err) {
+                console.log('Error sharing:', err);
+                // Fallback: Copy to clipboard
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    showToast('📋 คัดลอกลิงก์แล้ว!');
+                } catch (clipboardErr) {
+                    showToast('❌ ไม่สามารถแชร์ได้');
+                }
+            }
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-black/80 text-white px-6 py-3 rounded-xl z-50 animate-fade-in';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Enhanced search with loading state
+        const originalSearchHandler = searchBox.addEventListener;
+        searchBox.removeEventListener('input', originalSearchHandler);
+        
+        let searchTimeout;
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            
+            // Add loading state
+            if (searchTerm !== '') {
+                this.style.backgroundImage = 'url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iOCIgc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNoYXJyYXk9IjUgNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCAxMCAxMDszNjAgMTAgMTAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CjwvY2lyY2xlPgo8L3N2Zz4K")';
+                this.style.backgroundRepeat = 'no-repeat';
+                this.style.backgroundPosition = 'right 16px center';
+                this.style.backgroundSize = '20px 20px';
+            }
+            
+            // Debounce search
+            searchTimeout = setTimeout(() => {
+                performSearch(searchTerm);
+                // Remove loading state
+                this.style.backgroundImage = '';
+            }, 300);
+        });
+
+        function performSearch(searchTerm) {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const categories = document.querySelectorAll('.category');
+            
+            if (searchTerm === '') {
+                // Show all categories and close them
+                categories.forEach(category => {
+                    category.classList.remove('hidden');
+                    category.classList.remove('expanded');
+                });
+                serviceCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+                return;
+            }
+            
+            // Search through service cards
+            serviceCards.forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                    // Show and expand parent category
+                    const category = card.closest('.category');
+                    category.classList.remove('hidden');
+                    category.classList.add('expanded');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Hide categories with no visible cards
+            categories.forEach(category => {
+                const visibleCards = category.querySelectorAll('.service-card:not(.hidden)');
+                if (visibleCards.length === 0) {
+                    category.classList.add('hidden');
+                } else {
+                    category.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('recentCallsModal');
+            if (e.target === modal) {
+                hideRecentCalls();
+            }
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            loadDarkModePreference();
+            
+            // Open first category by default
+            const firstCategory = document.querySelector('.category');
+            if (firstCategory) {
+                firstCategory.classList.add('expanded');
+            }
+        });
+    </script>
+</body>
+</html>
